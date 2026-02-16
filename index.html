@@ -1,0 +1,545 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aditya’s Grand Wedding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts for Marathi + Decorative -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #e57300;      /* Saffron */
+      --marathi-green: #288f4f; /* Classic green */
+      --accent: #ffeb99;       /* Yellow-gold */
+      --cream: #fdf6e4;
+      --border: #cbb883;
+      --english-font: 'Montserrat', Arial, sans-serif;
+      --marathi-font: 'Baloo 2', 'Montserrat', Arial, sans-serif;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--cream);
+      color: #3e2723;
+      font-family: var(--english-font);
+      font-weight: 500;
+    }
+    .main-container {
+      max-width: 650px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #f2c16440;
+      padding: 2rem 1rem 1.5rem 1rem;
+      border: 2px solid var(--border);
+      position: relative;
+    }
+    .event-slide:not(.active) {
+      display: none;
+    }
+    .event-slide {
+      animation: fadeIn 0.7s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .slide-nav {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem 0 0.7rem 0;
+      gap: 1rem;
+    }
+    .slide-nav button {
+      padding: 7px 23px;
+      background: var(--primary);
+      border: none;
+      border-radius: 1.2em;
+      color: #fff;
+      font-family: inherit;
+      cursor: pointer;
+      font-size: 1.14rem;
+      font-weight: 500;
+      transition: background 0.21s;
+    }
+    .slide-nav button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .lang-switch {
+      position: absolute;
+      right: 30px;
+      top: 27px;
+      z-index: 2;
+    }
+    .lang-switch button {
+      font-family: inherit;
+      background: var(--marathi-green);
+      color: #fff;
+      border: none;
+      font-size: 1.04rem;
+      border-radius: 12px;
+      padding: 7px 21px;
+      margin-left: 7px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .lang-switch button.active, .lang-switch button:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .event-heading {
+      font-size: 2.1rem;
+      font-family: var(--marathi-font);
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 7px;
+      margin-top: 0;
+    }
+    .event-emoji {
+      font-size: 2.2rem;
+      display: block;
+      text-align: center;
+    }
+    .event-date {
+      font-size: 1.08rem;
+      color: var(--marathi-green);
+      text-align: center;
+      margin-top: 4px;
+      margin-bottom: 0.7em;
+      font-weight: 600;
+    }
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .notes {
+      background: var(--accent);
+      padding: 1rem;
+      border-radius: 0.8em;
+      color: #3d2b04;
+      max-width: 510px;
+      margin: 20px auto 8px;
+      box-shadow: 0 2px 7px #f9c97033;
+      font-size: 1.04em;
+    }
+    .event-content {
+      padding: 0.5em 0 0.5em 0;
+      font-size: 1.12em;
+    }
+    .dress, .venue, .lunch {
+      margin: 0.48em 0 0.48em 0;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent 6%, var(--marathi-green) 14%, transparent 94%);
+      margin: 1.6em 0;
+      border: none;
+    }
+    .footer {
+      text-align: center;
+      margin: 18px 0 0 0;
+      font-size: 1.04em;
+      color: #6a502e;
+    }
+    /* Decorative Motif on top */
+    .motif {
+      width: 88px; height: 88px;
+      background: url("https://i.imgur.com/TabHQiE.png") center/contain no-repeat;
+      margin: -56px auto 16px auto;
+      filter: drop-shadow(0 2px 5px #ebba5140);
+    }
+    @media (max-width: 700px) {
+      .main-container {
+        padding: 0.7rem 0.1rem 1rem 0.1rem;
+        max-width: 99vw;
+      }
+      .lang-switch {
+        right: 8px; top: 7px;
+      }
+      .motif {width: 59px; height: 59px;}
+      .event-heading {font-size: 1.28rem;}
+    }
+    /* Marathi font for body when in Marathi */
+    body.marathi * {
+      font-family: var(--marathi-font) !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="motif"></div>
+    <div class="lang-switch">
+      <button id="lang-en" class="active">English</button>
+      <button id="lang-mr">मराठी</button>
+    </div>
+    <div id="slides">
+      <!-- Slides will be injected here -->
+    </div>
+    <div class="slide-nav">
+      <button id="prevBtn">&larr; Prev</button>
+      <button id="nextBtn">Next &rarr;</button>
+    </div>
+    <div class="footer" id="footer"></div>
+  </div>
+  <script>
+    // Multilingual slides content
+    const data = [
+      // Slide 1 - Welcome
+      {
+        en: {
+          emoji: "👰🤵🎉",
+          heading: "Welcome to Aditya’s Grand Wedding!",
+          date: "Dates: 22nd – 29th April 2026",
+          content: `<p>Let’s Make Lifelong Memories Together!</p>`,
+          footer: "Patil & Deshmukh Families invite you with love!"
+        },
+        mr: {
+          emoji: "👰🤵🎉",
+          heading: "आदित्यच्या ग्रँड विवाहास स्वागत!",
+          date: "दि. २२ एप्रिल ते २९ एप्रिल २०२६",
+          content: `<p>आपण सर्वांनी मिळून अविस्मरणीय क्षणांना साकारूया!</p>`,
+          footer: "पाटील व देशमुख परिवार आपल्या प्रेमासह आमंत्रित करतो!"
+        }
+      },
+      // Slide 2 - Muhurt
+      {
+        en: {
+          emoji: "🕉️✨",
+          heading: "Muhurt",
+          date: "Date: 22-04-2026<br>Time: 11:00 AM",
+          content: `<div class="dress"><b>Dress Code / Theme:</b>
+            <ul>
+              <li>👩‍🦰 Women: Paithani Saree <br><i>Auspicious start to the festivities!</i></li>
+            </ul></div>`,
+          footer: ""
+        },
+        mr: {
+          emoji: "🕉️✨",
+          heading: "मुहूर्त",
+          date: "दि. २२-०४-२०२६<br>वेळ: सकाळी ११:००",
+          content: `<div class="dress"><b>ड्रेस कोड / थीम:</b>
+            <ul>
+              <li>👩‍🦰 महिला : पैठणी साडी <br><i>मंगल कार्याची शुभ सुरुवात!</i></li>
+            </ul></div>`,
+          footer: ""
+        }
+      },
+      // Slide 3 - Haldi
+      {
+        en: {
+          emoji: "🌅💛",
+          heading: "Haldi Ceremony",
+          date: "Date: 23-04-2026<br>Time: 08:00 AM",
+          content: `<div class="dress"><b>Dress Code / Theme:</b>
+            <ul>
+              <li><b>Haldi:</b>
+                <ul>
+                  <li>👩‍🦱 Women: White Kurti</li>
+                  <li>👨 Men: White Kurta</li>
+                </ul>
+              </li>
+              <li><b>Puja:</b>
+                <ul>
+                  <li>👩‍🦳 Women: Yellow Kurti</li>
+                  <li>👨 Men: Yellow Kurta</li>
+                </ul>
+              </li>
+            </ul></div>
+            <div class="lunch">🍽️ <b>Lunch:</b> 12:30 PM</div>
+            <div>Let’s spread joy and colors!</div>`,
+          footer: ""
+        },
+        mr: {
+          emoji: "🌅💛",
+          heading: "हळद समारंभ",
+          date: "दि. २३-०४-२०२६<br>वेळ: सकाळी ८:००",
+          content: `<div class="dress"><b>ड्रेस कोड / थीम:</b>
+            <ul>
+              <li><b>हळद:</b>
+                <ul>
+                  <li>👩‍🦱 महिला : पांढरी कुर्ती</li>
+                  <li>👨 पुरुष : पांढरा कुर्ता</li>
+                </ul>
+              </li>
+              <li><b>पूजा:</b>
+                <ul>
+                  <li>👩‍🦳 महिला : पिवळी कुर्ती</li>
+                  <li>👨 पुरुष : पिवळा कुर्ता</li>
+                </ul>
+              </li>
+            </ul></div>
+            <div class="lunch">🍽️ <b>दुपारचे जेवण:</b> १२:३०</div>
+            <div>आनंदाचे व रंगांचे रंग उधळूया!</div>`,
+          footer: ""
+        }
+      },
+      // Slide 4 - Mehendi
+      {
+        en: {
+          emoji: "🌆🌿",
+          heading: "Mehendi Ceremony",
+          date: "Date: 24-04-2026<br>Time: 6:30 PM (Evening Event)",
+          content: `<div class="dress"><b>Dress Code / Theme:</b> Green for All</div>
+              <div>Lovely hands, joyful hearts!</div>`,
+          footer: ""
+        },
+        mr: {
+          emoji: "🌆🌿",
+          heading: "मेहंदी समारंभ",
+          date: "दि. २४-०४-२०२६<br>वेळ: सं. ६:३० (संध्याकाळी)",
+          content: `<div class="dress"><b>ड्रेस कोड / थीम:</b> सर्वांसाठी हिरवा रंग</div>
+            <div>सुंदर हात, आनंदी मन!</div>`,
+          footer: ""
+        }
+      },
+      // Slide 5 - Sangit
+      {
+        en: {
+          emoji: "🎤🎉",
+          heading: "Sangit Day (First Day!)",
+          date: "Date: 25-04-2026<br>Venue: Jasraj Palace (Radisson Individuals), Yavatmal",
+          content: `
+          <div class="event-content">
+            <ul>
+              <li>🍳 <b>Breakfast:</b> 7:30 AM</li>
+              <li>🚌 <b>Travel to Yavatmal:</b> 8:30 AM</li>
+              <li>📍 <b>Arrive Yavatmal:</b> 11:00 AM</li>
+              <li>💐 <b>Swagat:</b> 11:00–11:30 AM</li>
+              <li>👰🧑‍🤝‍🧑 <b>Vihinichi Pangat:</b> 11:30–12:30 PM</li>
+              <li>🛏️ <b>Room Allocation:</b> 1:00–2:00 PM</li>
+              <li>🎪 <b>Carnival Party:</b> 3:00–5:00 PM
+                <ul>
+                  <li>👩 Women: Pastel/ Floral Any</li>
+                  <li>👨 Men: Pastel/ Floral Any</li>
+                </ul>
+              </li>
+              <li>☕ <b>High-Tea:</b> 5:00–6:00 PM</li>
+              <li>🕺 <b>Sangit (Dance & Music):</b> 7:00–9:00 PM</li>
+              <li>🍽️ <b>Dinner:</b> 8:00–10:00 PM</li>
+              <li>😴 Good Night!</li>
+            </ul>
+          </div>`,
+          footer: ""
+        },
+        mr: {
+          emoji: "🎤🎉",
+          heading: "संगीत सोहळा (पहिला दिवस)",
+          date: "दि. २५-०४-२०२६<br>स्थळ: जसराज पॅलेस (Radisson Individuals), यवतमाळ",
+          content: `
+          <div class="event-content">
+            <ul>
+              <li>🍳 <b>नाश्ता:</b> सकाळी ७:३०</li>
+              <li>🚌 <b>यवतमाळकडे प्रस्थान:</b> ८:३०</li>
+              <li>📍 <b>पोहोचणे:</b> ११:००</li>
+              <li>💐 <b>स्वागत:</b> ११:००–११:३०</li>
+              <li>👰🧑‍🤝‍🧑 <b>वहिनींची पंगत:</b> ११:३०–१२:३०</li>
+              <li>🛏️ <b>रूम्स वाटप:</b> १:००–२:००</li>
+              <li>🎪 <b>कार्निव्हल पार्टी:</b> ३:००–५:००
+                <ul>
+                  <li>👩 महिला: पेस्टल/फ्लोरल कुठलाही रंग</li>
+                  <li>👨 पुरुष: पेस्टल/फ्लोरल कुठलाही रंग</li>
+                </ul>
+              </li>
+              <li>☕ <b>हाय टी:</b> ५:००–६:००</li>
+              <li>🕺 <b>संगीत (नृत्य व गाणी):</b> ७:००–९:००</li>
+              <li>🍽️ <b>रात्रीचं जेवण:</b> ८:००–१०:००</li>
+              <li>😴 शुभ रात्री!</li>
+            </ul>
+          </div>`,
+          footer: ""
+        }
+      },
+      // Slide 6 - Wedding Day
+      {
+        en: {
+          emoji: "💍🎊",
+          heading: "The Wedding Day (The Most Awaited!)",
+          date: "Date: 26-04-2026<br>Venue: Jasraj Palace (Radisson Individuals), Yavatmal",
+          content: `
+          <div class="event-content">
+            <ul>
+              <li>🍳 <b>Breakfast:</b> 8:00–9:00 AM</li>
+              <li>🎺 <b>Baraat/Varath:</b> 9:00–10:30 AM</li>
+              <li>💑 <b>Marriage (Lagn):</b> 11:05 AM (Sharp)</li>
+              <li>🍛 <b>Wedding Lunch:</b> 12:00 Noon onwards</li>
+              <li>🔥 <b>Saptapadi:</b> 3:00 PM</li>
+              <li>☕ <b>High-Tea:</b> 4:30 PM</li>
+              <li>💞 <b>Usangi:</b> 5:30 PM</li>
+              <li>🏡 <b>Way to Home:</b> 6:00–6:30 PM</li>
+            </ul>
+            <div style="margin-top:0.8em; color:#388e3c; font-style:italic;">"Here begins the ‘Happily Ever After’!"</div>
+          </div>`,
+          footer: ""
+        },
+        mr: {
+          emoji: "💍🎊",
+          heading: "विवाह सोहळा (सर्वात खास!)",
+          date: "दि. २६-०४-२०२६<br>स्थळ: जसराज पॅलेस (Radisson Individuals), यवतमाळ",
+          content: `
+          <div class="event-content">
+            <ul>
+              <li>🍳 <b>नाश्ता:</b> ८:००–९:००</li>
+              <li>🎺 <b>वरात:</b> ९:००–१०:३०</li>
+              <li>💑 <b>लग्न समारंभ:</b> ११:०५ (अचूक वेळ)</li>
+              <li>🍛 <b>लग्नाचे जेवण:</b> १२:०० पासून</li>
+              <li>🔥 <b>सप्तपदी:</b> ३:००</li>
+              <li>☕ <b>हाय टी:</b> ४:३०</li>
+              <li>💞 <b>उसंगी:</b> ५:३०</li>
+              <li>🏡 <b>गावी परत:</b> ६:००–६:३०</li>
+            </ul>
+            <div style="margin-top:0.8em; color:#388e3c; font-style:italic;">"येथून सुरु होतं खरंखुरा 'आनंदी संसार'!"</div>
+          </div>`,
+          footer: ""
+        }
+      },
+      // Slide 7 - Reception
+      {
+        en: {
+          emoji: "🎉👑",
+          heading: "Grand Reception",
+          date: "Date: 29-04-2026<br>Time: 7:00 PM onwards<br>Venue: Alishan Celebrations, Warora",
+          content: `<div class="dress"><b>Dress Code:</b>
+            <ul>
+              <li>👨 Men: Blazers/Suits</li>
+              <li>👩 Women: Party-wear Sarees / One Piece</li>
+            </ul>
+            <div>🤝 Meet & Greet <br> 🍽️ Grand Dinner <br> A Night to Remember!</div>
+          </div>`,
+          footer: ""
+        },
+        mr: {
+          emoji: "🎉👑",
+          heading: "भव्य स्वागतसमारंभ",
+          date: "दि. २९-०४-२०२६<br>स. ७ नंतर<br>स्थळ: अलिशान सेलिब्रेशन्स, वरोरा",
+          content: `<div class="dress"><b>ड्रेस कोड:</b>
+            <ul>
+              <li>👨 पुरुष: ब्लेझर/सूट</li>
+              <li>👩 महिला: पार्टीवियर साडी / वनपीस</li>
+            </ul>
+            <div>🤝 भेटा आणि गप्पा <br>🍽️ भव्य भोजन <br> अविस्मरणीय संध्याकाळ!</div>
+          </div>`,
+          footer: ""
+        }
+      },
+      // Slide 8 - Important Notes
+      {
+        en: {
+          emoji: "📝",
+          heading: "Important Notes",
+          date: "",
+          content: `<div class="notes">
+            <ul>
+              <li>Be on time!</li>
+              <li>Follow dress codes</li>
+              <li>Bring your smiles and dancing shoes</li>
+              <li><b>Please carry Aadhar cards for hotel check-in 🪪</b></li>
+            </ul>
+            Traditions & Pure Joy Awaits! 🥳❤️ 🎊📷
+          </div>`,
+          footer: ""
+        },
+        mr: {
+          emoji: "📝",
+          heading: "महत्वाची सूचना",
+          date: "",
+          content: `<div class="notes">
+            <ul>
+              <li>वेळी उपस्थित रहा!</li>
+              <li>ड्रेस कोड पाळा</li>
+              <li>हसरे चेहरे आणि मजा करण्याची तयारी असू द्या</li>
+              <li><b>होटेल चेक-इन साठी आधार कार्ड सोबत ठेवा 🪪</b></li>
+            </ul>
+            परंपरा व निव्वळ आनंदाची गाजवलेली मेजवानी! 🥳❤️ 🎊📷
+          </div>`,
+          footer: ""
+        }
+      }
+    ];
+
+    let currentSlide = 0;
+    let lang = 'en';
+    const slidesDiv = document.getElementById('slides');
+    const footerDiv = document.getElementById('footer');
+    const langEnBtn = document.getElementById('lang-en');
+    const langMrBtn = document.getElementById('lang-mr');
+
+    function renderSlide() {
+      slidesDiv.innerHTML = "";
+      // Slide HTML creation
+      const slide = data[currentSlide][lang];
+      const div = document.createElement('div');
+      div.className = 'event-slide active';
+      div.innerHTML =
+        `<div class="event-emoji">${slide.emoji}</div>
+         <h2 class="event-heading">${slide.heading}</h2>
+         <div class="event-date">${slide.date || ''}</div>
+         <div class="event-content">${slide.content || ''}</div>`;
+      slidesDiv.appendChild(div);
+
+      // Show/hide prev/next
+      document.getElementById('prevBtn').disabled = currentSlide === 0;
+      document.getElementById('nextBtn').disabled = currentSlide === data.length - 1;
+
+      // Footer if any
+      if (slide.footer) footerDiv.innerHTML = slide.footer;
+      else footerDiv.innerHTML = "";
+    }
+    document.getElementById('prevBtn').onclick = () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        renderSlide();
+      }
+    };
+    document.getElementById('nextBtn').onclick = () => {
+      if (currentSlide < data.length - 1) {
+        currentSlide++;
+        renderSlide();
+      }
+    };
+    langEnBtn.onclick = () => {
+      lang = 'en';
+      langEnBtn.classList.add('active');
+      langMrBtn.classList.remove('active');
+      document.body.classList.remove('marathi');
+      renderSlide();
+    };
+    langMrBtn.onclick = () => {
+      lang = 'mr';
+      langMrBtn.classList.add('active');
+      langEnBtn.classList.remove('active');
+      document.body.classList.add('marathi');
+      renderSlide();
+    };
+
+    // Init render
+    renderSlide();
+
+  </script>
+</body>
+</html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
